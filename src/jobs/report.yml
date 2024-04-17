@@ -1,0 +1,31 @@
+description: >
+  This job will report a deploy event for an OpsLevel service by using the OpsLevel CLI.
+
+executor: default
+
+parameters:
+  service:
+    type: string
+    description: 'The service alias for the event'
+  description:
+    type: string
+    description: 'The description or release notes for the event'
+    default: "deploy reported using opslevel circleci orb"
+  environment:
+    type: string
+    description: 'The environment for the event'
+    default: "production"
+  deployer_name:
+    type: string
+    description: 'The deployer name who created the event'
+  deployer_email:
+    type: string
+    description: 'The deployer email who created the event'
+
+steps:
+  - report:
+      deployer_email: <<parameters.deployer_email>>
+      deployer_name: <<parameters.deployer_name>>
+      description: <<parameters.description>>
+      environment: <<parameters.environment>>
+      service: <<parameters.service>>

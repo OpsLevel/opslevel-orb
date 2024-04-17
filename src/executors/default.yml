@@ -1,0 +1,5 @@
+description: >
+ This executor uses a stable OpsLevel CLI container image for reporting deploys.
+
+docker:
+ - image: 'public.ecr.aws/opslevel/cli:v2024.3.15'

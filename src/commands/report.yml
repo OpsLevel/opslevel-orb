@@ -1,0 +1,32 @@
+description: >
+  This command will report a deploy event for an OpsLevel service by using the OpsLevel CLI.
+
+parameters:
+  service:
+    type: string
+    description: 'The service alias for the event'
+  description:
+    type: string
+    description: 'The description or release notes for the event'
+    default: "deploy reported using opslevel circleci orb"
+  environment:
+    type: string
+    description: 'The environment for the event'
+    default: "production"
+  deployer_name:
+    type: string
+    description: 'The deployer name who created the event'
+  deployer_email:
+    type: string
+    description: 'The deployer email who created the event'
+
+steps:
+  - run:
+      environment:
+        DEPLOYER_EMAIL: <<parameters.deployer_email>>
+        DEPLOYER_NAME: <<parameters.deployer_name>>
+        DESCRIPTION: <<parameters.description>>
+        ENVIRONMENT: <<parameters.environment>>
+        SERVICE: <<parameters.service>>
+      name: Report Deploy
+      command: <<include(scripts/report_deploy.sh)>>

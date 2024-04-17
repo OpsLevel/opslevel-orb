@@ -1,0 +1,19 @@
+description: >
+  This example reports a deploy to OpsLevel and uses all settable fields.
+# Provide a use-case based example for using this orb.
+# Everything in the `usage` section will be displayed in the orb registry.
+# Comments are not retained.
+usage:
+  version: 2.1
+  orbs:
+    opslevel: opslevel/report_deploy@0.0.1
+  workflows:
+    report-deploy-event:
+      jobs:
+        - checkout
+        - report_deploy/report:
+            deployer_email: "robot@example.com"
+            deployer_name: "Robot"
+            description: "deploy sent from a robot using the opslevel circleci orb"
+            environment: "self_hosted"
+            service: "<alias for the service being deployed>"
