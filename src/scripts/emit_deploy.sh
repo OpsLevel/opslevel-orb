@@ -1,11 +1,14 @@
-#!/bin/bash
-# This example uses envsubst to support variable substitution in the string parameter type.
-# https://circleci.com/docs/orbs-best-practices/#accepting-parameters-as-strings-or-environment-variables
-TO=$(circleci env subst "${PARAM_TO}")
-# If for any reason the TO variable is not set, default to "World"
-echo "Hello ${TO:-World}!"
-
 #!/bin/sh -l
+
+# TODO: is this syntax really necessary?
+INPUT_INTEGRATION_URL=$(circleci env subst "${INTEGRATION_URL}")
+INPUT_SERVICE=$(circleci env subst "${SERVICE}")
+INPUT_DESCRIPTION=$(circleci env subst "${DESCRIPTION}")
+INPUT_ENVIRONMENT=$(circleci env subst "${ENVIRONMENT}")
+INPUT_NUMBER=$(circleci env subst "${NUMBER}")
+INPUT_DEPLOYER_NAME=$(circleci env subst "${DEPLOYER_NAME}")
+INPUT_DEPLOYER_EMAIL=$(circleci env subst "${DEPLOYER_EMAIL}")
+INPUT_DEDUPLICATION_ID=$(circleci env subst "${DEDUPLICATION_ID}")
 
 OPSLEVEL_FILE=./opslevel.yml
 if test -f "$OPSLEVEL_FILE"; then
@@ -13,14 +16,14 @@ if test -f "$OPSLEVEL_FILE"; then
 fi
 
 cat <<EOF > data.yaml
-service: "${INPUT_SERVICE:-${OPSLEVEL_SERVICE:-${GITHUB_REPOSITORY}}}"
+service: "${INPUT_SERVICE:-${OPSLEVEL_SERVICE:-${CIRCLE_PROJECT_REPONAME}}}"
 description: "${INPUT_DESCRIPTION}"
 environment: "${INPUT_ENVIRONMENT:-production}"
-deploy-number: "${INPUT_NUMBER:-${GITHUB_RUN_NUMBER}}"
-deploy-url: "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-dedup-id: "${INPUT_DEDUPLICATION_ID:-${GITHUB_RUN_ID}}"
+deploy-number: "${INPUT_NUMBER:-${CIRCLE_BUILD_NUM}}"
+deploy-url: "${CIRCLE_BUILD_URL}"
+dedup-id: "${INPUT_DEDUPLICATION_ID:-${CIRCLE_JOB}}"
 deployer:
-  name: "${INPUT_DEPLOYER_NAME:-${GITHUB_ACTOR}}"
+  name: "${INPUT_DEPLOYER_NAME:-${CIRCLE_USERNAME}}"
   email: "${INPUT_DEPLOYER_EMAIL}"
 EOF
 

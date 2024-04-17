@@ -4,6 +4,8 @@
 
 This orb emits a deploy event for service to OpsLevel.
 
+TODO: add a very obvious link to the orb docs so users can see an example
+
 ## Inputs
 
 ## Inputs
@@ -28,11 +30,11 @@ The environment for the event - Default: ""
 
 ### `number`
 
-The deploy number for the event - Default: `${GITHUB_RUN_NUMBER}`
+The deploy number for the event - Default: `${CIRCLE_BUILD_NUM}`
 
 ### `deployer_name`
 
-The deployer name who created the event - Default: `${GITHUB_ACTOR}`
+The deployer name who created the event - Default: `${CIRCLE_USERNAME}`
 
 ### `deployer_email`
 
@@ -40,38 +42,4 @@ The deployer email who create the event - Default: ""
 
 ### `deduplication_id`
 
-An identifier that can be used to deduplicate deployments - Default: `${GITHUB_RUN_ID}`
-
-## Example usage
-
-TODO: update these examples/redirect to orb docs...
-
-```yaml
-jobs:
-  deploy:
-    steps:
-      - name: Report Deploy
-        uses: OpsLevel/report-deploy-github-action@v0.7.0
-        with:
-          integration_url: ${{ secrets.DEPLOY_INTEGRATION_URL }}
-          service: "my-service"
-```
-
-If you want to add the git commit author as the deployer
-
-```yaml
-jobs:
-  deploy:
-    steps:
-      - name: Get Deployer
-        id: deployer
-        run: |
-          DEPLOYER=$(git show -s --format='%ae')
-          echo "DEPLOYER=${DEPLOYER}" >> $GITHUB_OUTPUT
-      - name: Report Deploy
-        uses: OpsLevel/report-deploy-github-action@v0.7.0
-        with:
-          integration_url: ${{ secrets.DEPLOY_INTEGRATION_URL }}
-          service: "my-service"
-          deployer_email: ${{ steps.deployer.outputs.DEPLOYER }}
-```
+An identifier that can be used to deduplicate deployments - Default: `${CIRCLE_JOB}`
