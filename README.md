@@ -1,39 +1,77 @@
-# Orb Template
-
+# OpsLevel - Report Deploy CircleCI Orb
 
 [![CircleCI Build Status](https://circleci.com/gh/OpsLevel/opslevel-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/OpsLevel/opslevel-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/namespace-1/opslevel.svg)](https://circleci.com/developer/orbs/orb/namespace-1/opslevel) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/OpsLevel/opslevel-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
+This orb emits a deploy event for service to OpsLevel.
 
+## Inputs
 
-A project template for Orbs.
+## Inputs
 
-This repository is designed to be automatically ingested and modified by the CircleCI CLI's `orb init` command.
+### `integration_url`
 
-_**Edit this area to include a custom title and description.**_
+**Required** The OpsLevel deploy integration url.
 
----
+### `service`
 
-## Resources
+The service alias for the event - Default: `<github_org_or_user_name>/<repository_name>`
 
-[CircleCI Orb Registry Page](https://circleci.com/developer/orbs/orb/namespace-1/opslevel) - The official registry page of this orb for all versions, executors, commands, and jobs described.
+If the repository has an `./opslevel.yml` file the service name will get pulled from it.
 
-[CircleCI Orb Docs](https://circleci.com/docs/orb-intro/#section=configuration) - Docs for using, creating, and publishing CircleCI Orbs.
+### `description`
 
-### How to Contribute
+The description or release notes for the event - Default: ""
 
-We welcome [issues](https://github.com/OpsLevel/opslevel-orb/issues) to and [pull requests](https://github.com/OpsLevel/opslevel-orb/pulls) against this repository!
+### `environment`
 
-### How to Publish An Update
-1. Merge pull requests with desired changes to the main branch.
-    - For the best experience, squash-and-merge and use [Conventional Commit Messages](https://conventionalcommits.org/).
-2. Find the current version of the orb.
-    - You can run `circleci orb info namespace-1/opslevel | grep "Latest"` to see the current version.
-3. Create a [new Release](https://github.com/OpsLevel/opslevel-orb/releases/new) on GitHub.
-    - Click "Choose a tag" and _create_ a new [semantically versioned](http://semver.org/) tag. (ex: v1.0.0)
-      - We will have an opportunity to change this before we publish if needed after the next step.
-4.  Click _"+ Auto-generate release notes"_.
-    - This will create a summary of all of the merged pull requests since the previous release.
-    - If you have used _[Conventional Commit Messages](https://conventionalcommits.org/)_ it will be easy to determine what types of changes were made, allowing you to ensure the correct version tag is being published.
-5. Now ensure the version tag selected is semantically accurate based on the changes included.
-6. Click _"Publish Release"_.
-    - This will push a new tag and trigger your publishing pipeline on CircleCI.
+The environment for the event - Default: ""
+
+### `number`
+
+The deploy number for the event - Default: `${GITHUB_RUN_NUMBER}`
+
+### `deployer_name`
+
+The deployer name who created the event - Default: `${GITHUB_ACTOR}`
+
+### `deployer_email`
+
+The deployer email who create the event - Default: ""
+
+### `deduplication_id`
+
+An identifier that can be used to deduplicate deployments - Default: `${GITHUB_RUN_ID}`
+
+## Example usage
+
+TODO: update these examples/redirect to orb docs...
+
+```yaml
+jobs:
+  deploy:
+    steps:
+      - name: Report Deploy
+        uses: OpsLevel/report-deploy-github-action@v0.7.0
+        with:
+          integration_url: ${{ secrets.DEPLOY_INTEGRATION_URL }}
+          service: "my-service"
+```
+
+If you want to add the git commit author as the deployer
+
+```yaml
+jobs:
+  deploy:
+    steps:
+      - name: Get Deployer
+        id: deployer
+        run: |
+          DEPLOYER=$(git show -s --format='%ae')
+          echo "DEPLOYER=${DEPLOYER}" >> $GITHUB_OUTPUT
+      - name: Report Deploy
+        uses: OpsLevel/report-deploy-github-action@v0.7.0
+        with:
+          integration_url: ${{ secrets.DEPLOY_INTEGRATION_URL }}
+          service: "my-service"
+          deployer_email: ${{ steps.deployer.outputs.DEPLOYER }}
+```

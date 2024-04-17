@@ -1,0 +1,42 @@
+description: >
+  Create a deploy event for a service in OpsLevel
+# https://circleci.com/docs/reusing-config/#parameter-syntax
+# TODO: specify the required vs non-required fields, add sensible defaults (see README)
+parameters:
+  integration_url:
+    type: string
+    description: 'The OpsLevel deploy integration url'
+  service:
+    type: string
+    description: 'The service alias for the event'
+  description:
+    type: string
+    description: 'The description or release notes for the event'
+  environment:
+    type: string
+    description: 'The environment for the event'
+  number:
+    type: string
+    description: 'The deploy number for the event - Default: ${GITHUB_RUN_NUMBER}'
+  deployer_name:
+    type: string
+    description: 'The deployer name who created the event - Default: ${GITHUB_ACTOR}'
+  deployer_email:
+    type: string
+    description: 'The deployer email who created the event'
+  deduplication_id:
+    type: string
+    description: 'An identifier that can be used to deduplicate deployments'
+steps:
+  - run:
+      environment:
+        INPUT_INTEGRATION_URL: <<parameters.integration_url>>
+        INPUT_SERVICE: <<parameters.service>>
+        INPUT_DESCRIPTION: <<parameters.description>>
+        INPUT_ENVIRONMENT: <<parameters.environment>>
+        INPUT_NUMBER: <<parameters.number>>
+        INPUT_DEPLOYER_NAME: <<parameters.deployer_name>>
+        INPUT_DEPLOYER_EMAIL: <<parameters.deployer_email>>
+        INPUT_DEDUPLICATION_ID: <<parameters.deduplication_id>>
+      name: Emit Deploy
+      command: <<include(scripts/emit_deploy.sh)>>
