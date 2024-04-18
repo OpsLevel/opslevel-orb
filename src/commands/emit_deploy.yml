@@ -28,9 +28,8 @@ parameters:
   deduplication_id:
     type: string
     description: 'An identifier that can be used to deduplicate deployments'
-
 steps:
-  - run:
+  - emit_deploy:
       environment:
         INTEGRATION_URL: <<parameters.integration_url>>
         SERVICE: <<parameters.service>>
