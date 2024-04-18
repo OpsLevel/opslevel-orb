@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash
 
 # TODO: is this syntax really necessary?
 INPUT_INTEGRATION_URL=$(circleci env subst "${INTEGRATION_URL}")
