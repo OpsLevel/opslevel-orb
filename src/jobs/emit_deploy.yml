@@ -1,41 +1,41 @@
-description: >
-  Job to create a deploy event for a service in OpsLevel
+# description: >
+#   Job to create a deploy event for a service in OpsLevel
 
-executor: default
+# executor: default
 
-parameters:
-  integration_url:
-    type: string
-    description: 'The OpsLevel deploy integration url'
-  service:
-    type: string
-    description: 'The service alias for the event'
-  description:
-    type: string
-    description: 'The description or release notes for the event'
-  environment:
-    type: string
-    description: 'The environment for the event'
-  number:
-    type: string
-    description: 'The deploy number for the event - Default: ${CIRCLE_BUILD_NUM}'
-  deployer_name:
-    type: string
-    description: 'The deployer name who created the event - Default: ${CIRCLE_USERNAME}'
-  deployer_email:
-    type: string
-    description: 'The deployer email who created the event'
-  deduplication_id:
-    type: string
-    description: 'An identifier that can be used to deduplicate deployments'
+# parameters:
+#   integration_url:
+#     type: string
+#     description: 'The OpsLevel deploy integration url'
+#   service:
+#     type: string
+#     description: 'The service alias for the event'
+#   description:
+#     type: string
+#     description: 'The description or release notes for the event'
+#   environment:
+#     type: string
+#     description: 'The environment for the event'
+#   number:
+#     type: string
+#     description: 'The deploy number for the event - Default: ${CIRCLE_BUILD_NUM}'
+#   deployer_name:
+#     type: string
+#     description: 'The deployer name who created the event - Default: ${CIRCLE_USERNAME}'
+#   deployer_email:
+#     type: string
+#     description: 'The deployer email who created the event'
+#   deduplication_id:
+#     type: string
+#     description: 'An identifier that can be used to deduplicate deployments'
 
-steps:
-  - emit_deploy:
-      integration_url: <<parameters.integration_url>>
-      service: <<parameters.service>>
-      description: <<parameters.description>>
-      environment: <<parameters.environment>>
-      number: <<parameters.number>>
-      deployer_name: <<parameters.deployer_name>>
-      deployer_email: <<parameters.deployer_email>>
-      deduplication_id: <<parameters.deduplication_id>>
+# steps:
+#   - emit_deploy:
+#       integration_url: <<parameters.integration_url>>
+#       service: <<parameters.service>>
+#       description: <<parameters.description>>
+#       environment: <<parameters.environment>>
+#       number: <<parameters.number>>
+#       deployer_name: <<parameters.deployer_name>>
+#       deployer_email: <<parameters.deployer_email>>
+#       deduplication_id: <<parameters.deduplication_id>>
