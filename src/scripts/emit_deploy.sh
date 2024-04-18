@@ -12,7 +12,7 @@ INPUT_DEDUPLICATION_ID=$(circleci env subst "${DEDUPLICATION_ID}")
 
 OPSLEVEL_FILE=./opslevel.yml
 if test -f "$OPSLEVEL_FILE"; then
-  OPSLEVEL_SERVICE=$(cat ./opslevel.yml | grep "name:" | awk '{gsub("name:",""); print}' | xargs)
+  OPSLEVEL_SERVICE=$(grep "name:" < "$OPSLEVEL_FILE" | awk '{gsub("name:",""); print}' | xargs)
 fi
 
 cat <<EOF > data.yaml

@@ -1,7 +1,7 @@
 version: 2.1
 
 description: >
-  A CircleCI orb for emitting deploy events to OpsLevel
+  This orb will report a deploy event for an OpsLevel service by using the OpsLevel CLI.
 
 # This information will be displayed in the orb registry and is not mandatory.
 display:
