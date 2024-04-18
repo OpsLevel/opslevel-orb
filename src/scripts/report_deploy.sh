@@ -1,13 +1,13 @@
 #!/bin/bash
 
-INPUT_INTEGRATION_URL=$(circleci env subst "${INTEGRATION_URL}")
-INPUT_SERVICE=$(circleci env subst "${SERVICE}")
-INPUT_DESCRIPTION=$(circleci env subst "${DESCRIPTION}")
-INPUT_ENVIRONMENT=$(circleci env subst "${ENVIRONMENT}")
-INPUT_NUMBER=$(circleci env subst "${NUMBER}")
-INPUT_DEPLOYER_NAME=$(circleci env subst "${DEPLOYER_NAME}")
-INPUT_DEPLOYER_EMAIL=$(circleci env subst "${DEPLOYER_EMAIL}")
-INPUT_DEDUPLICATION_ID=$(circleci env subst "${DEDUPLICATION_ID}")
+INPUT_DESCRIPTION=$(eval echo "$DESCRIPTION")
+INPUT_DEDUPLICATION_ID=$(eval echo "$DEDUPLICATION_ID")
+INPUT_DEPLOYER_EMAIL=$(eval echo "$DEPLOYER_EMAIL")
+INPUT_DEPLOYER_NAME=$(eval echo "$DEPLOYER_NAME")
+INPUT_ENVIRONMENT=$(eval echo "$ENVIRONMENT")
+INPUT_INTEGRATION_URL=$(eval echo "$INTEGRATION_URL")
+INPUT_NUMBER=$(eval echo "$NUMBER")
+INPUT_SERVICE=$(eval echo "$SERVICE")
 
 OPSLEVEL_FILE=./opslevel.yml
 if test -f "$OPSLEVEL_FILE"; then
@@ -26,6 +26,6 @@ deployer:
   email: "${INPUT_DEPLOYER_EMAIL}"
 EOF
 
-opslevel create deploy -i "${INPUT_INTEGRATION_URL}" -f .
+opslevel create deploy -i "$INPUT_INTEGRATION_URL" -f .
 
 rm data.yaml

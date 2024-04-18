@@ -8,35 +8,42 @@ parameters:
   service:
     type: string
     description: 'The service alias for the event'
+    default: ""
   description:
     type: string
     description: 'The description or release notes for the event'
-  environment:
+    default: ""
+  event_environment:
     type: string
     description: 'The environment for the event'
+    default: ""
   number:
     type: string
     description: 'The deploy number for the event - Default: ${CIRCLE_BUILD_NUM}'
+    default: ""
   deployer_name:
     type: string
     description: 'The deployer name who created the event - Default: ${CIRCLE_USERNAME}'
+    default: ""
   deployer_email:
     type: string
     description: 'The deployer email who created the event'
+    default: ""
   deduplication_id:
     type: string
     description: 'An identifier that can be used to deduplicate deployments'
+    default: ""
 
 steps:
   - run:
+      name: Report Deploy
       environment:
         INTEGRATION_URL: <<parameters.integration_url>>
         SERVICE: <<parameters.service>>
         DESCRIPTION: <<parameters.description>>
-        ENVIRONMENT: <<parameters.environment>>
+        ENVIRONMENT: <<parameters.event_environment>>
         NUMBER: <<parameters.number>>
         DEPLOYER_NAME: <<parameters.deployer_name>>
         DEPLOYER_EMAIL: <<parameters.deployer_email>>
         DEDUPLICATION_ID: <<parameters.deduplication_id>>
-      name: Report Deploy
       command: <<include(scripts/report_deploy.sh)>>
