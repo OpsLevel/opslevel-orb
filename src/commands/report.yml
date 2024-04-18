@@ -1,8 +1,6 @@
 description: >
   This command will report a deploy event for an OpsLevel service by using the OpsLevel CLI.
 
-# TODO: set defaults (sync with jobs/emit_deploy.yml and the README)
-
 parameters:
   integration_url:
     type: string
@@ -40,5 +38,5 @@ steps:
         DEPLOYER_NAME: <<parameters.deployer_name>>
         DEPLOYER_EMAIL: <<parameters.deployer_email>>
         DEDUPLICATION_ID: <<parameters.deduplication_id>>
-      name: Emit Deploy
-      command: <<include(scripts/emit_deploy.sh)>>
+      name: Report Deploy
+      command: <<include(scripts/report_deploy.sh)>>

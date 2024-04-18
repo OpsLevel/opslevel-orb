@@ -2,9 +2,7 @@
 
 [![CircleCI Build Status](https://circleci.com/gh/OpsLevel/opslevel-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/OpsLevel/opslevel-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/opslevel/opslevel.svg)](https://circleci.com/developer/orbs/orb/opslevel/opslevel) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/OpsLevel/opslevel-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
-This orb emits a deploy event for service to OpsLevel.
-
-TODO: add a very obvious link to the orb docs so users can see an example
+This orb reports a deploy event for service to OpsLevel.
 
 ## Inputs
 
