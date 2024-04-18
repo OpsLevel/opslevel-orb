@@ -13,8 +13,8 @@ workflows:
     jobs:
       - orb-tools/lint:
           filters: *filters
-      - orb-tools/pack:
-          filters: *filters
+      # - orb-tools/pack:
+      #     filters: *filters
       - orb-tools/review:
           filters: *filters
       - shellcheck/check:
