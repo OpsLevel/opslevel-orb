@@ -28,19 +28,27 @@ jobs:
     steps:
       - checkout
       # Run your orb's commands to validate them.
-      - opslevel/greet
+      - opslevel/emit_deploy
+          integration_url: ${INTEGRATION_URL}
+          service: ${SERVICE}
+          description: ${DESCRIPTION}
+          environment: ${ENVIRONMENT}
+          number: ${NUMBER}
+          deployer_name: ${DEPLOYER_NAME}
+          deployer_email: ${DEPLOYER_EMAIL}
+          deduplication_id: ${DEDUPLICATION_ID}
 workflows:
   test-deploy:
     jobs:
       # Make sure to include "filters: *filters" in every test job you want to run as part of your deployment.
       # Test your orb's commands in a custom job and test your orb's jobs directly as a part of this workflow.
       - command-test:
-          filters: *filters
+          # filters: *filters
       # The orb must be re-packed for publishing, and saved to the workspace.
       - orb-tools/pack:
           filters: *release-filters
       - orb-tools/publish:
-          orb_name: namespace-1/opslevel
+          orb_name: opslevel/opslevel
           vcs_type: << pipeline.project.type >>
           pub_type: production
           # Ensure this job requires all test jobs and the pack job.
