@@ -30,7 +30,7 @@ parameters:
     description: 'An identifier that can be used to deduplicate deployments'
 
 steps:
-  - emit_deploy:
+  - run:
       environment:
         INTEGRATION_URL: <<parameters.integration_url>>
         SERVICE: <<parameters.service>>
