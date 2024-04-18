@@ -16,7 +16,6 @@ workflows:
       - orb-tools/pack:
           filters: *filters
       - orb-tools/review:
-          orb_name: opslevel
           filters: *filters
       - shellcheck/check:
           filters: *filters
