@@ -1,5 +1,5 @@
 description: >
-  Command to create a deploy event for a service in OpsLevel
+  This command will report a deploy event for an OpsLevel service by using the OpsLevel CLI.
 
 # TODO: set defaults (sync with jobs/emit_deploy.yml and the README)
 
@@ -28,8 +28,9 @@ parameters:
   deduplication_id:
     type: string
     description: 'An identifier that can be used to deduplicate deployments'
+
 steps:
-  - emit_deploy:
+  - run:
       environment:
         INTEGRATION_URL: <<parameters.integration_url>>
         SERVICE: <<parameters.service>>
