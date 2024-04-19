@@ -14,7 +14,6 @@ workflows:
       - orb-tools/lint:
           filters: *filters
       - orb-tools/pack:
-          checkout: false
           filters: *filters
       - orb-tools/review:
           filters: *filters
