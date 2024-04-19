@@ -1,13 +1,13 @@
 version: 2.1
 
 description: >
-  This orb will report a deploy event for an OpsLevel service by using the OpsLevel CLI.
+  Sample orb description
 # What will your orb allow users to accomplish?
 # Descriptions should be short, simple, and informative.
 
 # This information will be displayed in the orb registry and is not mandatory.
 display:
-  home_url: "https://docs.opslevel.com"
+  home_url: "https://www.example.com/docs"
   source_url: "https://github.com/OpsLevel/opslevel-orb"
 
 # If your orb requires other orbs, you can import them like this. Otherwise remove the "orbs" stanza.

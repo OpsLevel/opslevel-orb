@@ -6,17 +6,8 @@ description: >
 usage:
   version: 2.1
   orbs:
-    opslevel: opslevel/report-deploy@1.2.3
+    opslevel: opslevel/opslevel@1.2.3
   workflows:
-    report-deploy-event:
+    use-my-orb:
       jobs:
-        - checkout
-        - opslevel/report:
-            deployer_email: ${CIRCLE_USERNAME}@example.com
-            deployer_name: ${CIRCLE_USERNAME}
-            deduplication_id: "123ABC"
-            description: "Deployed my service"
-            environment: "production"
-            integration_url: $INTEGRATION_URL
-            number: $CIRCLE_BUILD_NUM
-            service: "my-service"
+        - opslevel/<job-name>
