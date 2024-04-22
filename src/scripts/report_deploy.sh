@@ -5,14 +5,14 @@ apt-get update >/dev/null 2>&1
 apt-get install -y ca-certificates >/dev/null 2>&1
 
 echo "sending opslevel request with vars ..."
-echo "INTEGRATION_URL: $INTEGRATION_URL"
-echo "INPUT_SERVICE: $INPUT_SERVICE"
-echo "INPUT_DESCRIPTION: $INPUT_DESCRIPTION"
-echo "INPUT_ENVIRONMENT: $INPUT_ENVIRONMENT"
-echo "INPUT_NUMBER: $INPUT_NUMBER"
-echo "INPUT_DEPLOYER_NAME: $INPUT_DEPLOYER_NAME"
-echo "INPUT_DEPLOYER_EMAIL: $INPUT_DEPLOYER_EMAIL"
-echo "INPUT_DEDUPLICATION_ID: $INPUT_DEDUPLICATION_ID"
+echo "INTEGRATION_URL: XXX"
+echo "SERVICE: $SERVICE"
+echo "DESCRIPTION: $DESCRIPTION"
+echo "ENVIRONMENT: $ENVIRONMENT"
+echo "NUMBER: $NUMBER"
+echo "DEPLOYER_NAME: $DEPLOYER_NAME"
+echo "DEPLOYER_EMAIL: $DEPLOYER_EMAIL"
+echo "DEDUPLICATION_ID: $DEDUPLICATION_ID"
 
 OPSLEVEL_FILE=./opslevel.yml
 if test -f "$OPSLEVEL_FILE"; then
@@ -20,15 +20,15 @@ if test -f "$OPSLEVEL_FILE"; then
 fi
 
 cat <<EOF > data.yaml
-service: "${INPUT_SERVICE:-${OPSLEVEL_SERVICE:-${CIRCLE_PROJECT_REPONAME}}}"
-description: "${INPUT_DESCRIPTION}"
-environment: "${INPUT_ENVIRONMENT:-production}"
-deploy-number: "${INPUT_NUMBER:-${CIRCLE_BUILD_NUM}}"
+service: "${SERVICE:-${OPSLEVEL_SERVICE:-${CIRCLE_PROJECT_REPONAME}}}"
+description: "${DESCRIPTION}"
+environment: "${ENVIRONMENT:-production}"
+deploy-number: "${NUMBER:-${CIRCLE_BUILD_NUM}}"
 deploy-url: "${CIRCLE_BUILD_URL}"
-dedup-id: "${INPUT_DEDUPLICATION_ID:-${CIRCLE_JOB}}"
+dedup-id: "${DEDUPLICATION_ID:-${CIRCLE_JOB}}"
 deployer:
-  name: "${INPUT_DEPLOYER_NAME:-${CIRCLE_USERNAME}}"
-  email: "${INPUT_DEPLOYER_EMAIL}"
+  name: "${DEPLOYER_NAME:-${CIRCLE_USERNAME}}"
+  email: "${DEPLOYER_EMAIL}"
 EOF
 
-opslevel create deploy -i "$INPUT_INTEGRATION_URL" -f .
+opslevel create deploy -i "$INTEGRATION_URL" -f .
