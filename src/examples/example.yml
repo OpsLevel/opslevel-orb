@@ -12,11 +12,11 @@ usage:
       jobs:
         - checkout
         - opslevel/report:
-            deployer_email: ${CIRCLE_USERNAME}@example.com
-            deployer_name: ${CIRCLE_USERNAME}
-            deduplication_id: "123ABC"
-            description: "Deployed my service"
-            environment: "production"
-            integration_url: $INTEGRATION_URL
-            number: $CIRCLE_BUILD_NUM
-            service: "my-service"
+            deployer_email: "robot@opslevel.com"
+            deployer_name: "OpsLevel Robot"
+            deduplication_id: "123456"
+            description: "Deploy test for CircleCI"
+            environment: "ENV_TEST"
+            integration_url: "app.opslevel.com/123456"
+            number: "123456"
+            service: "test_service"
