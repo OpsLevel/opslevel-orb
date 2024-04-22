@@ -1,7 +1,7 @@
 version: 2.1
 
 description: >
-  Sample orb description. The quick brown fox jumps over the lazy dog.
+  Official CircleCI orb for OpsLevel - can be used to report a deploy for a service in OpsLevel.
 # What will your orb allow users to accomplish?
 # Descriptions should be short, simple, and informative.
 
