@@ -30,7 +30,7 @@ parameters:
     description: 'An identifier that can be used to deduplicate deployments'
 
 steps:
-  - report_deploy:
+  - report:
       integration_url: <<parameters.integration_url>>
       service: <<parameters.service>>
       description: <<parameters.description>>
