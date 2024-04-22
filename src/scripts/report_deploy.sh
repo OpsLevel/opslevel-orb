@@ -1,5 +1,6 @@
 #!/bin/bash
 
+apt-get update
 apt-get install -y ca-certificates
 
 INPUT_INTEGRATION_URL=$(circleci env subst "$INTEGRATION_URL")
