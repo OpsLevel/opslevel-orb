@@ -1,16 +1,18 @@
 #!/bin/bash
 
+echo "installing ca-certificates ..."
 apt-get update
 apt-get install -y ca-certificates
 
-INPUT_INTEGRATION_URL=$(circleci env subst "$INTEGRATION_URL")
-INPUT_SERVICE=$(circleci env subst "$SERVICE")
-INPUT_DESCRIPTION=$(circleci env subst "$DESCRIPTION")
-INPUT_ENVIRONMENT=$(circleci env subst "$ENVIRONMENT")
-INPUT_NUMBER=$(circleci env subst "$NUMBER")
-INPUT_DEPLOYER_NAME=$(circleci env subst "$DEPLOYER_NAME")
-INPUT_DEPLOYER_EMAIL=$(circleci env subst "$DEPLOYER_EMAIL")
-INPUT_DEDUPLICATION_ID=$(circleci env subst "$DEDUPLICATION_ID")
+echo "sending opslevel request with vars ..."
+echo "INTEGRATION_URL: $INTEGRATION_URL"
+echo "INPUT_SERVICE: $INPUT_SERVICE"
+echo "INPUT_DESCRIPTION: $INPUT_DESCRIPTION"
+echo "INPUT_ENVIRONMENT: $INPUT_ENVIRONMENT"
+echo "INPUT_NUMBER: $INPUT_NUMBER"
+echo "INPUT_DEPLOYER_NAME: $INPUT_DEPLOYER_NAME"
+echo "INPUT_DEPLOYER_EMAIL: $INPUT_DEPLOYER_EMAIL"
+echo "INPUT_DEDUPLICATION_ID: $INPUT_DEDUPLICATION_ID"
 
 OPSLEVEL_FILE=./opslevel.yml
 if test -f "$OPSLEVEL_FILE"; then
