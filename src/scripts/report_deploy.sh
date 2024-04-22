@@ -4,11 +4,6 @@ echo "installing ca-certificates ..."
 apt-get update >/dev/null 2>&1
 apt-get install -y ca-certificates >/dev/null 2>&1
 
-OPSLEVEL_FILE=./opslevel.yml
-if test -f "$OPSLEVEL_FILE"; then
-  OPSLEVEL_SERVICE=$(grep "name:" < "$OPSLEVEL_FILE" | awk '{gsub("name:",""); print}' | xargs)
-fi
-
 cat <<EOF > data.yaml
 service: "${SERVICE:-${CIRCLE_PROJECT_REPONAME}}"
 description: "${DESCRIPTION}"
