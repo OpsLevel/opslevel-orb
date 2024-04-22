@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "installing ca-certificates ..."
-apt-get update 2>&1 /dev/null
-apt-get install -y ca-certificates 2>&1 /dev/null
+apt-get update 2>&1 >/dev/null
+apt-get install -y ca-certificates 2>&1 >/dev/null
 
 echo "sending opslevel request with vars ..."
 echo "INTEGRATION_URL: $INTEGRATION_URL"
