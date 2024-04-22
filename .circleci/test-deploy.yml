@@ -30,12 +30,8 @@ jobs:
       - opslevel/report:
           deployer_email: "robot@opslevel.com"
           deployer_name: "OpsLevel Robot"
-          deduplication_id: "123456"
-          description: "Deploy test for CircleCI"
-          environment: "ENV_TEST"
           integration_url: ${INTEGRATION_URL}
-          number: "123456"
-          service: "test_service"
+          service: "opslevel_circleci_orb"
 
 workflows:
   test-deploy:
