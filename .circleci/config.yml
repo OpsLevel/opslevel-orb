@@ -4,6 +4,11 @@ orbs:
   orb-tools: circleci/orb-tools@12.1
   shellcheck: circleci/shellcheck@3.2
 
+executors:
+  docker:
+    docker:
+      - image: circleci/circleci-cli:latest
+
 filters: &filters
   tags:
     only: /.*/
