@@ -33,7 +33,7 @@ jobs:
           deduplication_id: "123456"
           description: "Deploy test for CircleCI"
           environment: "ENV_TEST"
-          integration_url: "app.opslevel.com/123456"
+          integration_url: ${INTEGRATION_URL}
           number: "123456"
           service: "test_service"
 
