@@ -30,13 +30,12 @@ parameters:
     description: 'An identifier that can be used to deduplicate deployments'
 
 steps:
-  - run:
-    - report_deploy:
-        integration_url: <<parameters.integration_url>>
-        service: <<parameters.service>>
-        description: <<parameters.description>>
-        environment: <<parameters.environment>>
-        number: <<parameters.number>>
-        deployer_name: <<parameters.deployer_name>>
-        deployer_email: <<parameters.deployer_email>>
-        deduplication_id: <<parameters.deduplication_id>>
+  - report_deploy:
+      integration_url: <<parameters.integration_url>>
+      service: <<parameters.service>>
+      description: <<parameters.description>>
+      environment: <<parameters.environment>>
+      number: <<parameters.number>>
+      deployer_name: <<parameters.deployer_name>>
+      deployer_email: <<parameters.deployer_email>>
+      deduplication_id: <<parameters.deduplication_id>>
