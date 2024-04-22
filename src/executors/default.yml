@@ -1,0 +1,5 @@
+description: >
+ This is the executor that uses the container image for the OpsLevel CLI.
+
+docker:
+ - image: 'public.ecr.aws/opslevel/cli:v2024.3.15'
