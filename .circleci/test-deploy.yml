@@ -24,7 +24,7 @@ jobs:
   # You may want to add additional validation steps to ensure the commands are working as expected.
   command-test:
     docker:
-      - image: cimg/base:current
+      - image: 'public.ecr.aws/opslevel/cli:v2024.3.15'
     steps:
       - checkout
       - opslevel/report:
