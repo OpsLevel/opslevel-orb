@@ -1,6 +1,8 @@
 description: >
   This job will report a deploy event for an OpsLevel service by using the OpsLevel CLI.
 
+executor: 'public.ecr.aws/opslevel/cli:v2024.3.15'
+
 parameters:
   integration_url:
     type: string
