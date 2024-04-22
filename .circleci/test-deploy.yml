@@ -6,11 +6,6 @@ orbs:
   # The orb definition is intentionally not included here. It will be injected into the pipeline.
   opslevel: {}
 
-executors: # Define an executor
-  cli-image:
-    docker:
-      - image: public.ecr.aws/opslevel/cli:v2024.3.15
-
 # Use this tag to ensure test jobs always run,
 # even though the downstream publish job will only run on release tags.
 filters: &filters
