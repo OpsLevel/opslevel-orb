@@ -10,24 +10,31 @@ parameters:
   service:
     type: string
     description: 'The service alias for the event'
+    default: ""
   description:
     type: string
     description: 'The description or release notes for the event'
+    default: ""
   environment:
     type: string
     description: 'The environment for the event'
+    default: ""
   number:
     type: string
     description: 'The deploy number for the event - Default: ${CIRCLE_BUILD_NUM}'
+    default: ""
   deployer_name:
     type: string
     description: 'The deployer name who created the event - Default: ${CIRCLE_USERNAME}'
+    default: ""
   deployer_email:
     type: string
     description: 'The deployer email who created the event'
+    default: ""
   deduplication_id:
     type: string
     description: 'An identifier that can be used to deduplicate deployments'
+    default: ""
 
 steps:
   - report:
