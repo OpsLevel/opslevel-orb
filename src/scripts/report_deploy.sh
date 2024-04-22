@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo apt-get install -y ca-certificates
+
 INPUT_INTEGRATION_URL=$(circleci env subst "$INTEGRATION_URL")
 INPUT_SERVICE=$(circleci env subst "$SERVICE")
 INPUT_DESCRIPTION=$(circleci env subst "$DESCRIPTION")
