@@ -32,7 +32,7 @@ jobs:
       - image: cimg/base:current
     steps:
       - checkout
-      - opslevel/report_deploy:
+      - opslevel/report:
           deployer_email: ""
           deployer_name: ${CIRCLE_USERNAME}
           deduplication_id: ""
