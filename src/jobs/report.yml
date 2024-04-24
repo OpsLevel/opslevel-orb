@@ -4,9 +4,6 @@ description: >
 executor: default
 
 parameters:
-  integration_url:
-    type: string
-    description: 'The OpsLevel deploy integration url (this should be kept secret)'
   service:
     type: string
     description: 'The service alias for the event'
@@ -31,5 +28,4 @@ steps:
       deployer_name: <<parameters.deployer_name>>
       description: <<parameters.description>>
       environment: <<parameters.environment>>
-      integration_url: <<parameters.integration_url>>
       service: <<parameters.service>>

@@ -32,7 +32,6 @@ jobs:
           deployer_name: "OpsLevel Robot"
           description: "this deploy event was sent from test-deploy.yml from the opslevel orb"
           environment: "production"
-          integration_url: ${INTEGRATION_URL}
           service: "opslevel_circleci_orb"
 
 workflows:

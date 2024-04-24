@@ -16,5 +16,4 @@ usage:
             deployer_name: "Robot"
             description: "deploy sent from a robot using the opslevel circleci orb"
             environment: "self_hosted"
-            integration_url: "<generic deploy integration url>"
             service: "<alias for the service being deployed>"
