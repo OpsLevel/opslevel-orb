@@ -20,4 +20,4 @@ echo "request body preview ..."
 cat data.yaml
 
 echo "sending request to opslevel ..."
-opslevel create deploy -i "$INTEGRATION_URL" -f .
+opslevel create deploy -i "${INTEGRATION_URL}" -f .
