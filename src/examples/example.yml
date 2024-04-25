@@ -6,7 +6,7 @@ description: >
 usage:
   version: 2.1
   orbs:
-    opslevel: opslevel/report_deploy@0.0.1
+    report_deploy: opslevel/report_deploy@1.0.0
   workflows:
     report-deploy-event:
       jobs:
