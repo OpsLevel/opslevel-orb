@@ -1,8 +1,0 @@
----
-version: 1
-service:
-  name: CircleCI Report Deploy Orb
-  lifecycle: pre-alpha
-  tier: tier_2
-  owner: platform
-  description: A CircleCI orb that can report deploy events for a service in OpsLevel.
