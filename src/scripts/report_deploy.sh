@@ -11,6 +11,7 @@ environment: "${ENVIRONMENT}"
 deploy-number: "${CIRCLE_BUILD_NUM}"
 deploy-url: "${CIRCLE_BUILD_URL}"
 dedup-id: "${CIRCLE_PIPELINE_ID}"
+status: "success"
 deployer:
   name: "${DEPLOYER_NAME}"
   email: "${DEPLOYER_EMAIL}"
